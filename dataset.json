@@ -1,0 +1,13 @@
+{
+    "users": 10000,
+    "posts": 100000,
+    "comments": 500000,
+    "postsPerUser": [
+        10,
+        10
+    ],
+    "commentsPerPost": [
+        5,
+        5
+    ]
+}

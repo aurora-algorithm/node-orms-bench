@@ -1,0 +1,150 @@
+{
+ "busy_s": 15.211661,
+ "packages": {
+  "node internals / GC / native": 0.18831579273295665,
+  "http-errors": 7.112964192404761e-05,
+  "(garbage collector)": 0.03637650089625321,
+  "mime-types": 0.0012679746150009521,
+  "get-intrinsic": 4.24674202245238e-05,
+  "qs": 6.994633919333333e-05,
+  "debug": 0.0011249922017063094,
+  "our app": 0.001785932515850833,
+  "pg-protocol": 0.006628467463217856,
+  "drizzle-orm": 0.5648085373451328,
+  "pg": 0.06456527002541011,
+  "pg-pool": 0.005717061404405475,
+  "express": 0.1189826673102957,
+  "router": 0.0053798201261519045,
+  "parseurl": 0.0005510903773098809,
+  "fresh": 0.00013417338185488093,
+  "content-type": 0.0009553854769705951,
+  "on-finished": 8.145067129749998e-05,
+  "pg-types": 0.00048252455796904756,
+  "path-to-regexp": 0.0003455901364091666,
+  "body-parser": 0.001314320638620595,
+  "etag": 0.0009325740298840475,
+  "type-is": 6.633069196059522e-05
+ },
+ "functions": [
+  {
+   "name": "is",
+   "package": "drizzle-orm",
+   "share": 0.13068224436503023
+  },
+  {
+   "name": "stringify",
+   "package": "express",
+   "share": 0.10808458063849832
+  },
+  {
+   "name": "buildQueryFromSourceParams",
+   "package": "drizzle-orm",
+   "share": 0.08778278716571451
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.07559963372836143
+  },
+  {
+   "name": "writev",
+   "package": "node internals / GC / native",
+   "share": 0.05010813743482714
+  },
+  {
+   "name": "_parseRowAsArray",
+   "package": "pg",
+   "share": 0.04858963133611773
+  },
+  {
+   "name": "buildRelationalQueryWithoutPK",
+   "package": "drizzle-orm",
+   "share": 0.03999898498921321
+  },
+  {
+   "name": "(garbage collector)",
+   "package": "node internals / GC / native",
+   "share": 0.03637650089625321
+  },
+  {
+   "name": "mapRelationalRow",
+   "package": "drizzle-orm",
+   "share": 0.036096847017561065
+  },
+  {
+   "name": "mapFromDriverValue",
+   "package": "drizzle-orm",
+   "share": 0.023978183579031902
+  },
+  {
+   "name": "buildSelectQuery",
+   "package": "drizzle-orm",
+   "share": 0.02374697937325845
+  },
+  {
+   "name": "(program)",
+   "package": "node internals / GC / native",
+   "share": 0.022086279729741545
+  },
+  {
+   "name": "(anonymous)",
+   "package": "node internals / GC / native",
+   "share": 0.021908784320134402
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.017549628538264164
+  },
+  {
+   "name": "get",
+   "package": "drizzle-orm",
+   "share": 0.016455862380840593
+  },
+  {
+   "name": "sql",
+   "package": "drizzle-orm",
+   "share": 0.01523692909012369
+  },
+  {
+   "name": "get",
+   "package": "node internals / GC / native",
+   "share": 0.012301615188505713
+  },
+  {
+   "name": "getColumnCasing",
+   "package": "drizzle-orm",
+   "share": 0.011199828868129523
+  },
+  {
+   "name": "buildSelection",
+   "package": "drizzle-orm",
+   "share": 0.010887436947220951
+  },
+  {
+   "name": "escapeName",
+   "package": "drizzle-orm",
+   "share": 0.00687512034353119
+  },
+  {
+   "name": "buildJoins",
+   "package": "drizzle-orm",
+   "share": 0.006601580195614404
+  },
+  {
+   "name": "handle",
+   "package": "express",
+   "share": 0.006524008127712023
+  },
+  {
+   "name": "update",
+   "package": "node internals / GC / native",
+   "share": 0.006403705683422738
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.006191368582300118
+  }
+ ]
+}

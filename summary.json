@@ -1,0 +1,1322 @@
+{
+ "versions": [
+  "node v24.22.0",
+  "express 5.3.0",
+  "pg 8.23.1",
+  "kysely 0.29.7",
+  "drizzle-orm 0.45.4",
+  "@prisma/client 7.10.1",
+  "@prisma/adapter-pg 7.10.1",
+  "typeorm 1.1.2",
+  "oha 1.16.0",
+  "postgres 17.11 (Ubuntu 17.11-1.pgdg24.04+2)",
+  "cores: node 2, oha 6-8, postgres 3-5, monitoring 0-1"
+ ],
+ "configs": {
+  "drizzle/feed": {
+   "rps": 2020.75,
+   "rps_runs": [
+    1916.3,
+    2003.95,
+    2020.75,
+    2032.9,
+    2055.85
+   ],
+   "spread_pct": 6.905851787702584,
+   "p50_ms": 31.465624999999996,
+   "p99_ms": 40.259162740000015,
+   "core_busy": 1.0,
+   "node_cpu": 0.9974998346112343,
+   "node_cpu_us_per_request": 493.62852139613227,
+   "postgres_cpu": 0.48944788916196685,
+   "oha_cpu": 0.055279210978860266,
+   "node_pss_mb": 210.1142578125,
+   "statements_per_request": 1.0024000989731536,
+   "postgres_exec_ms_per_request": 0.08063590251144377,
+   "statements": [
+    {
+     "query": "select \"users\".\"id\", \"users\".\"name\", \"users\".\"email\", \"users\".\"created_at\", \"users_posts\".\"data\" as \"posts\" from \"users\" \"users\" left join lateral (select coalesce(json_agg(json_build_array(\"users_posts\".\"id\", \"users_posts\".\"title\", \"users_posts\".\"body\", \"users_posts\".\"created_at\", \"users_posts_comments\".\"data\") order by \"users_posts\".\"id\" asc), $3::json) as \"data\" from (select * from \"posts\" \"users_posts\" where \"users_posts\".\"user_id\" = \"users\".\"id\" order by \"users_posts\".\"id\" asc) \"users_posts\" left join lateral (select coalesce(json_agg(json_build_array(\"users_posts_comments\".\"id\", \"users_posts_comments\".\"author\", \"users_posts_comments\".\"body\", \"users_posts_comments\".\"created_at\") order by \"users_posts_comments\".\"id\" asc), $4::json) as \"data\" from (select * from \"comments\" \"users_posts_comments\" where \"users_posts_comments\".\"post_id\" = \"users_posts\".\"id\" order by \"users_posts_comments\".\"id\" asc) \"users_posts_comments\") \"users_posts_comments\" on $5) \"users_posts\" on $6 where \"users\".\"id\" = $1 limit $2",
+     "calls": 40512,
+     "total_ms": 3258.9
+    }
+   ],
+   "mac_background_cpu_pct": [
+    134,
+    101,
+    31,
+    19,
+    35
+   ]
+  },
+  "drizzle/list1000": {
+   "rps": 465.55,
+   "rps_runs": [
+    426.25,
+    437.05,
+    465.55,
+    467.85,
+    475.05
+   ],
+   "spread_pct": 10.482225324884547,
+   "p50_ms": 131.764792,
+   "p99_ms": 191.96978749999957,
+   "core_busy": 1.0,
+   "node_cpu": 0.9919730116739832,
+   "node_cpu_us_per_request": 2130.7550460186512,
+   "postgres_cpu": 0.1455623949337481,
+   "oha_cpu": 0.025278755903026667,
+   "node_pss_mb": 263.884765625,
+   "statements_per_request": 1.0084845881215767,
+   "postgres_exec_ms_per_request": 0.24155300182579745,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" from \"users\" order by \"users\".\"id\" asc limit $1",
+     "calls": 9390,
+     "total_ms": 2249.1
+    }
+   ],
+   "mac_background_cpu_pct": [
+    107,
+    61,
+    43,
+    18,
+    45
+   ]
+  },
+  "drizzle/list50": {
+   "rps": 4752.75,
+   "rps_runs": [
+    4678.75,
+    4679.4,
+    4752.75,
+    4809.95,
+    4818.7
+   ],
+   "spread_pct": 2.9446110146757105,
+   "p50_ms": 13.233291,
+   "p99_ms": 19.288697320000008,
+   "core_busy": 0.99949924887331,
+   "node_cpu": 0.9941663318054178,
+   "node_cpu_us_per_request": 209.17707260121358,
+   "postgres_cpu": 0.35111174569646963,
+   "oha_cpu": 0.10638877423629892,
+   "node_pss_mb": 203.611328125,
+   "statements_per_request": 1.0008205775603598,
+   "postgres_exec_ms_per_request": 0.017447793382778392,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" from \"users\" order by \"users\".\"id\" asc limit $1",
+     "calls": 95133,
+     "total_ms": 1658.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    107,
+    105,
+    20,
+    44,
+    15
+   ]
+  },
+  "drizzle/loop": {
+   "rps": 928.5,
+   "rps_runs": [
+    879.15,
+    881.7,
+    928.5,
+    950.15,
+    996.15
+   ],
+   "spread_pct": 12.60096930533118,
+   "p50_ms": 67.813979,
+   "p99_ms": 86.37388250000002,
+   "core_busy": 0.99899849774662,
+   "node_cpu": 0.9961666097492918,
+   "node_cpu_us_per_request": 1072.8773395253547,
+   "postgres_cpu": 0.7555991624363185,
+   "oha_cpu": 0.03277973416986833,
+   "node_pss_mb": 200.271484375,
+   "statements_per_request": 12.055950457727517,
+   "postgres_exec_ms_per_request": 0.11157242864835758,
+   "statements": [
+    {
+     "query": "select \"id\", \"author\", \"body\", \"created_at\" from \"comments\" where \"comments\".\"post_id\" = $1 order by \"comments\".\"id\" asc",
+     "calls": 186611,
+     "total_ms": 1703.8
+    },
+    {
+     "query": "select \"id\", \"title\", \"body\", \"created_at\" from \"posts\" where \"posts\".\"user_id\" = $1 order by \"posts\".\"id\" asc",
+     "calls": 18634,
+     "total_ms": 234.8
+    },
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" from \"users\" where \"users\".\"id\" = $1",
+     "calls": 18634,
+     "total_ms": 133.3
+    }
+   ],
+   "mac_background_cpu_pct": [
+    171,
+    82,
+    18,
+    84,
+    17
+   ]
+  },
+  "drizzle/one": {
+   "rps": 9462.85,
+   "rps_runs": [
+    9077.1,
+    9160.45,
+    9462.85,
+    9495.3,
+    9676.3
+   ],
+   "spread_pct": 6.332130383552512,
+   "p50_ms": 6.536709,
+   "p99_ms": 10.569213000000005,
+   "core_busy": 0.9985,
+   "node_cpu": 0.9988328887361662,
+   "node_cpu_us_per_request": 105.553072143822,
+   "postgres_cpu": 0.5488589631178157,
+   "oha_cpu": 0.17776770742785863,
+   "node_pss_mb": 234.8681640625,
+   "statements_per_request": 1.0003381645064648,
+   "postgres_exec_ms_per_request": 0.004893346084953265,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" from \"users\" where \"users\".\"id\" = $1",
+     "calls": 189321,
+     "total_ms": 926.1
+    }
+   ],
+   "mac_background_cpu_pct": [
+    143,
+    95,
+    22,
+    107,
+    66
+   ]
+  },
+  "drizzle/write": {
+   "rps": 3454.1,
+   "rps_runs": [
+    3104.2,
+    3155.65,
+    3454.1,
+    3471.85,
+    3491.35
+   ],
+   "spread_pct": 11.208418980342206,
+   "p50_ms": 17.5633955,
+   "p99_ms": 31.69226931000002,
+   "core_busy": 0.9939668174962293,
+   "node_cpu": 0.9893896096669297,
+   "node_cpu_us_per_request": 286.43919100979406,
+   "postgres_cpu": 0.7452370688473269,
+   "oha_cpu": 0.0772184847876081,
+   "node_pss_mb": 213.4638671875,
+   "statements_per_request": 4.005746793665499,
+   "postgres_exec_ms_per_request": 0.03411742566804667,
+   "statements": [
+    {
+     "query": "commit",
+     "calls": 69185,
+     "total_ms": 17.0
+    },
+    {
+     "query": "insert into \"posts\" (\"id\", \"user_id\", \"title\", \"body\", \"created_at\") values (default, $1, $2, $3, default), (default, $4, $5, $6, default), (default, $7, $8, $9, default) returning \"id\", \"title\", \"body\", \"created_at\"",
+     "calls": 69182,
+     "total_ms": 1848.1
+    },
+    {
+     "query": "insert into \"users\" (\"id\", \"name\", \"email\", \"created_at\") values (default, $1, $2, default) returning \"id\", \"name\", \"email\", \"created_at\"",
+     "calls": 69180,
+     "total_ms": 478.9
+    },
+    {
+     "query": "begin",
+     "calls": 69178,
+     "total_ms": 12.9
+    }
+   ],
+   "mac_background_cpu_pct": [
+    122,
+    64,
+    65,
+    139,
+    7
+   ]
+  },
+  "drizzle-prep/feed": {
+   "rps": 4490.35,
+   "rps_runs": [
+    4282.95,
+    4423.3,
+    4490.35,
+    4542.05,
+    4820.8
+   ],
+   "spread_pct": 11.977908180876776,
+   "p50_ms": 13.906917,
+   "p99_ms": 20.422147500000012,
+   "core_busy": 0.9994987468671679,
+   "node_cpu": 0.9949996926675415,
+   "node_cpu_us_per_request": 221.58622215808154,
+   "postgres_cpu": 0.560555634211845,
+   "oha_cpu": 0.1155565729826791,
+   "node_pss_mb": 206.3193359375,
+   "statements_per_request": 1.000924204126627,
+   "postgres_exec_ms_per_request": 0.0789225784181634,
+   "statements": [
+    {
+     "query": "select \"users\".\"id\", \"users\".\"name\", \"users\".\"email\", \"users\".\"created_at\", \"users_posts\".\"data\" as \"posts\" from \"users\" \"users\" left join lateral (select coalesce(json_agg(json_build_array(\"users_posts\".\"id\", \"users_posts\".\"title\", \"users_posts\".\"body\", \"users_posts\".\"created_at\", \"users_posts_comments\".\"data\") order by \"users_posts\".\"id\" asc), '[]'::json) as \"data\" from (select * from \"posts\" \"users_posts\" where \"users_posts\".\"user_id\" = \"users\".\"id\" order by \"users_posts\".\"id\" asc) \"users_posts\" left join lateral (select coalesce(json_agg(json_build_array(\"users_posts_comments\".\"id\", \"users_posts_comments\".\"author\", \"users_posts_comments\".\"body\", \"users_posts_comments\".\"created_at\") order by \"users_posts_comments\".\"id\" asc), '[]'::json) as \"data\" from (select * from \"comments\" \"users_posts_comments\" where \"users_posts_comments\".\"post_id\" = \"users_posts\".\"id\" order by \"users_posts_comments\".\"id\" asc) \"users_posts_comments\") \"users_posts_comments\" on true) \"users_posts\" on true where \"users\".\"id\" = $1 limit $2",
+     "calls": 89890,
+     "total_ms": 7087.8
+    }
+   ],
+   "mac_background_cpu_pct": [
+    85,
+    142,
+    30,
+    86,
+    16
+   ]
+  },
+  "drizzle-prep/one": {
+   "rps": 15075.7,
+   "rps_runs": [
+    14721.6,
+    14967.3,
+    15075.7,
+    15677.85,
+    15702.3
+   ],
+   "spread_pct": 6.505170572510721,
+   "p50_ms": 4.058084,
+   "p99_ms": 7.125361499999997,
+   "core_busy": 0.9969954932398598,
+   "node_cpu": 0.9951666658889862,
+   "node_cpu_us_per_request": 66.01130732828234,
+   "postgres_cpu": 0.4836925625529044,
+   "oha_cpu": 0.2564313564590492,
+   "node_pss_mb": 204.142578125,
+   "statements_per_request": 1.000208945521601,
+   "postgres_exec_ms_per_request": 0.005816645329901763,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" from \"users\" where \"users\".\"id\" = $1",
+     "calls": 301577,
+     "total_ms": 1753.8
+    }
+   ],
+   "mac_background_cpu_pct": [
+    82,
+    80,
+    29,
+    80,
+    16
+   ]
+  },
+  "kysely/feed": {
+   "rps": 5276.9,
+   "rps_runs": [
+    4663.9,
+    4896.05,
+    5276.9,
+    5335.55,
+    5588.0
+   ],
+   "spread_pct": 17.512175709223225,
+   "p50_ms": 10.850708000000001,
+   "p99_ms": 31.00921467,
+   "core_busy": 0.9994984954864594,
+   "node_cpu": 0.996389054819452,
+   "node_cpu_us_per_request": 188.82090902223882,
+   "postgres_cpu": 1.1516675529376428,
+   "oha_cpu": 0.13000057721695152,
+   "node_pss_mb": 268.1572265625,
+   "statements_per_request": 1.0007201197672877,
+   "postgres_exec_ms_per_request": 0.0926595160037143,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\", (select coalesce(json_agg(agg), '[]') from (select \"p\".\"id\", \"p\".\"title\", \"p\".\"body\", \"p\".\"created_at\" as \"createdAt\", (select coalesce(json_agg(agg), '[]') from (select \"c\".\"id\", \"c\".\"author\", \"c\".\"body\", \"c\".\"created_at\" as \"createdAt\" from \"comments\" as \"c\" where \"c\".\"post_id\" = \"p\".\"id\" order by \"c\".\"id\") as agg) as \"comments\" from \"posts\" as \"p\" where \"p\".\"user_id\" = \"users\".\"id\" order by \"p\".\"id\") as agg) as \"posts\" from \"users\" where \"users\".\"id\" = $1",
+     "calls": 105614,
+     "total_ms": 9779.1
+    }
+   ],
+   "mac_background_cpu_pct": [
+    148,
+    66,
+    63,
+    145,
+    68
+   ]
+  },
+  "kysely/list1000": {
+   "rps": 408.2,
+   "rps_runs": [
+    398.1,
+    405.2,
+    408.2,
+    423.3,
+    433.2
+   ],
+   "spread_pct": 8.598726114649674,
+   "p50_ms": 150.33479150000002,
+   "p99_ms": 333.64798246,
+   "core_busy": 1.0,
+   "node_cpu": 0.9950257221344911,
+   "node_cpu_us_per_request": 2437.5936358022814,
+   "postgres_cpu": 0.14500639021377631,
+   "oha_cpu": 0.02638810998286944,
+   "node_pss_mb": 278.451171875,
+   "statements_per_request": 1.0089416952474277,
+   "postgres_exec_ms_per_request": 0.2573248407643312,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\" from \"users\" order by \"id\" limit $1",
+     "calls": 8237,
+     "total_ms": 2100.8
+    }
+   ],
+   "mac_background_cpu_pct": [
+    103,
+    84,
+    20,
+    74,
+    48
+   ]
+  },
+  "kysely/list50": {
+   "rps": 5113.8,
+   "rps_runs": [
+    4852.8,
+    4908.55,
+    5113.8,
+    5281.7,
+    5309.2
+   ],
+   "spread_pct": 8.924869959716837,
+   "p50_ms": 11.033209000000001,
+   "p99_ms": 28.74332275,
+   "core_busy": 0.9994997498749375,
+   "node_cpu": 0.9978051527846064,
+   "node_cpu_us_per_request": 195.120097145881,
+   "postgres_cpu": 0.36834408340541136,
+   "oha_cpu": 0.11166960007018835,
+   "node_pss_mb": 244.744140625,
+   "statements_per_request": 1.0008115295866087,
+   "postgres_exec_ms_per_request": 0.01757694864875435,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\" from \"users\" order by \"id\" limit $1",
+     "calls": 102359,
+     "total_ms": 1797.7
+    }
+   ],
+   "mac_background_cpu_pct": [
+    164,
+    47,
+    81,
+    77,
+    23
+   ]
+  },
+  "kysely/loop": {
+   "rps": 1527.1,
+   "rps_runs": [
+    1434.65,
+    1495.4,
+    1527.1,
+    1527.2,
+    1546.05
+   ],
+   "spread_pct": 7.294872634405072,
+   "p50_ms": 40.915687,
+   "p99_ms": 63.527108250000005,
+   "core_busy": 0.9989974937343359,
+   "node_cpu": 0.9921942618677208,
+   "node_cpu_us_per_request": 649.7244855397295,
+   "postgres_cpu": 1.1124666520758997,
+   "oha_cpu": 0.04194334319439102,
+   "node_pss_mb": 250.220703125,
+   "statements_per_request": 12.03621242878659,
+   "postgres_exec_ms_per_request": 0.09792089581559818,
+   "statements": [
+    {
+     "query": "select \"id\", \"author\", \"body\", \"created_at\" as \"createdAt\" from \"comments\" where \"post_id\" = $1 order by \"id\"",
+     "calls": 306397,
+     "total_ms": 2465.7
+    },
+    {
+     "query": "select \"id\", \"title\", \"body\", \"created_at\" as \"createdAt\" from \"posts\" where \"user_id\" = $1 order by \"id\"",
+     "calls": 30607,
+     "total_ms": 341.7
+    },
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\" from \"users\" where \"id\" = $1",
+     "calls": 30606,
+     "total_ms": 183.3
+    }
+   ],
+   "mac_background_cpu_pct": [
+    78,
+    92,
+    24,
+    70,
+    13
+   ]
+  },
+  "kysely/one": {
+   "rps": 13300.45,
+   "rps_runs": [
+    11969.4,
+    12711.9,
+    13300.45,
+    13305.75,
+    13404.8
+   ],
+   "spread_pct": 10.792116056223659,
+   "p50_ms": 4.653917,
+   "p99_ms": 6.9274347199999955,
+   "core_busy": 0.9985007496251874,
+   "node_cpu": 0.9994723747294988,
+   "node_cpu_us_per_request": 75.14575632625203,
+   "postgres_cpu": 0.7408548369500925,
+   "oha_cpu": 0.23139503569558478,
+   "node_pss_mb": 200.2998046875,
+   "statements_per_request": 1.0002368340920795,
+   "postgres_exec_ms_per_request": 0.004600972147558917,
+   "statements": [
+    {
+     "query": "select \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\" from \"users\" where \"id\" = $1",
+     "calls": 266072,
+     "total_ms": 1223.9
+    }
+   ],
+   "mac_background_cpu_pct": [
+    106,
+    75,
+    32,
+    100,
+    98
+   ]
+  },
+  "kysely/write": {
+   "rps": 5714.25,
+   "rps_runs": [
+    5176.8,
+    5545.2,
+    5714.25,
+    5741.45,
+    5810.7
+   ],
+   "spread_pct": 11.093319333245827,
+   "p50_ms": 10.835042,
+   "p99_ms": 16.151832000000002,
+   "core_busy": 0.9939879759519038,
+   "node_cpu": 0.9943886922820008,
+   "node_cpu_us_per_request": 174.01910876877994,
+   "postgres_cpu": 1.1696528387385712,
+   "oha_cpu": 0.12304716529500061,
+   "node_pss_mb": 196.5146484375,
+   "statements_per_request": 4.002240014000088,
+   "postgres_exec_ms_per_request": 0.03284595528722055,
+   "statements": [
+    {
+     "query": "insert into \"posts\" (\"title\", \"body\", \"user_id\") values ($1, $2, $3), ($4, $5, $6), ($7, $8, $9) returning \"id\", \"title\", \"body\", \"created_at\" as \"createdAt\"",
+     "calls": 114349,
+     "total_ms": 2934.4
+    },
+    {
+     "query": "insert into \"users\" (\"name\", \"email\") values ($1, $2) returning \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\"",
+     "calls": 114349,
+     "total_ms": 771.4
+    },
+    {
+     "query": "commit",
+     "calls": 114349,
+     "total_ms": 27.5
+    },
+    {
+     "query": "begin",
+     "calls": 114349,
+     "total_ms": 20.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    50,
+    100,
+    22,
+    16,
+    23
+   ]
+  },
+  "node-pg/feed": {
+   "rps": 7709.1,
+   "rps_runs": [
+    7436.35,
+    7515.4,
+    7709.1,
+    7925.15,
+    8206.3
+   ],
+   "spread_pct": 9.987547184496231,
+   "p50_ms": 7.617708,
+   "p99_ms": 19.00526577,
+   "core_busy": 0.9989964877069744,
+   "node_cpu": 0.9991942361179686,
+   "node_cpu_us_per_request": 129.61230702909143,
+   "postgres_cpu": 1.8528280492486635,
+   "oha_cpu": 0.1855605688901436,
+   "node_pss_mb": 215.1259765625,
+   "statements_per_request": 1.0004150938501253,
+   "postgres_exec_ms_per_request": 0.12095834792647649,
+   "statements": [
+    {
+     "query": "SELECT u.id, u.name, u.email, u.created_at AS \"createdAt\",\n       coalesce((\n         SELECT json_agg(json_build_object(\n           $2, p.id, $3, p.title, $4, p.body,\n           $5, p.created_at,\n           $6, coalesce((\n             SELECT json_agg(json_build_object(\n               $7, c.id, $8, c.author, $9, c.body,\n               $10, c.created_at) ORDER BY c.id)\n             FROM comments c WHERE c.post_id = p.id), $11)\n         ) ORDER BY p.id)\n         FROM posts p WHERE p.user_id = u.id), $12) AS posts\n     FROM users u WHERE u.id = $1",
+     "calls": 154246,
+     "total_ms": 18649.6
+    }
+   ],
+   "mac_background_cpu_pct": [
+    131,
+    81,
+    50,
+    83,
+    30
+   ]
+  },
+  "node-pg/list1000": {
+   "rps": 472.4,
+   "rps_runs": [
+    465.05,
+    468.25,
+    472.4,
+    491.0,
+    492.7
+   ],
+   "spread_pct": 5.853090601185432,
+   "p50_ms": 131.5678335,
+   "p99_ms": 176.0437522400002,
+   "core_busy": 1.0,
+   "node_cpu": 0.9954168987145869,
+   "node_cpu_us_per_request": 2107.148388472877,
+   "postgres_cpu": 0.18030568649708603,
+   "oha_cpu": 0.03444935746133561,
+   "node_pss_mb": 243.6865234375,
+   "statements_per_request": 1.0088907705334462,
+   "postgres_exec_ms_per_request": 0.2655906011854361,
+   "statements": [
+    {
+     "query": "SELECT id, name, email, created_at AS \"createdAt\" FROM users ORDER BY id LIMIT $1",
+     "calls": 9532,
+     "total_ms": 2509.3
+    }
+   ],
+   "mac_background_cpu_pct": [
+    86,
+    96,
+    70,
+    102,
+    22
+   ]
+  },
+  "node-pg/list50": {
+   "rps": 6008.6,
+   "rps_runs": [
+    5752.95,
+    5980.75,
+    6008.6,
+    6012.8,
+    6124.1
+   ],
+   "spread_pct": 6.176979662483782,
+   "p50_ms": 10.2407915,
+   "p99_ms": 20.62119342999984,
+   "core_busy": 0.998998998998999,
+   "node_cpu": 0.9983065129527697,
+   "node_cpu_us_per_request": 166.14627583010514,
+   "postgres_cpu": 0.4177646127876047,
+   "oha_cpu": 0.12916352479657303,
+   "node_pss_mb": 185.345703125,
+   "statements_per_request": 1.0006407482608262,
+   "postgres_exec_ms_per_request": 0.017103817861065806,
+   "statements": [
+    {
+     "query": "SELECT id, name, email, created_at AS \"createdAt\" FROM users ORDER BY id LIMIT $1",
+     "calls": 120249,
+     "total_ms": 2055.4
+    }
+   ],
+   "mac_background_cpu_pct": [
+    88,
+    87,
+    88,
+    25,
+    51
+   ]
+  },
+  "node-pg/loop": {
+   "rps": 2051.2,
+   "rps_runs": [
+    2003.15,
+    2008.75,
+    2051.2,
+    2076.2,
+    2171.5
+   ],
+   "spread_pct": 8.207390795631822,
+   "p50_ms": 30.257229,
+   "p99_ms": 47.04182265999989,
+   "core_busy": 0.9979959919839679,
+   "node_cpu": 0.9952508188127089,
+   "node_cpu_us_per_request": 485.2041823384892,
+   "postgres_cpu": 1.4677393498514733,
+   "oha_cpu": 0.059720701874622445,
+   "node_pss_mb": 202.076171875,
+   "statements_per_request": 12.02542414196568,
+   "postgres_exec_ms_per_request": 0.09624853744149765,
+   "statements": [
+    {
+     "query": "SELECT id, author, body, created_at AS \"createdAt\"\n       FROM comments WHERE post_id = $1 ORDER BY id",
+     "calls": 411155,
+     "total_ms": 3256.5
+    },
+    {
+     "query": "SELECT id, title, body, created_at AS \"createdAt\" FROM posts WHERE user_id = $1 ORDER BY id",
+     "calls": 41088,
+     "total_ms": 446.9
+    },
+    {
+     "query": "SELECT id, name, email, created_at AS \"createdAt\" FROM users WHERE id = $1",
+     "calls": 41088,
+     "total_ms": 245.1
+    }
+   ],
+   "mac_background_cpu_pct": [
+    79,
+    76,
+    26,
+    80,
+    63
+   ]
+  },
+  "node-pg/one": {
+   "rps": 16055.9,
+   "rps_runs": [
+    14753.1,
+    15251.65,
+    16055.9,
+    16166.4,
+    16637.6
+   ],
+   "spread_pct": 11.737118442441709,
+   "p50_ms": 3.8331250000000003,
+   "p99_ms": 6.69916947000002,
+   "core_busy": 0.9984992496248124,
+   "node_cpu": 0.9991666388889155,
+   "node_cpu_us_per_request": 62.23049713120508,
+   "postgres_cpu": 0.8727827141700809,
+   "oha_cpu": 0.25249909076347515,
+   "node_pss_mb": 178.4560546875,
+   "statements_per_request": 1.0001993036827583,
+   "postgres_exec_ms_per_request": 0.0050081278533124895,
+   "statements": [
+    {
+     "query": "SELECT id, name, email, created_at AS \"createdAt\" FROM users WHERE id = $1",
+     "calls": 321182,
+     "total_ms": 1608.2
+    }
+   ],
+   "mac_background_cpu_pct": [
+    87,
+    72,
+    23,
+    113,
+    20
+   ]
+  },
+  "node-pg/write": {
+   "rps": 5655.25,
+   "rps_runs": [
+    5420.25,
+    5525.7,
+    5655.25,
+    5681.0,
+    5721.4
+   ],
+   "spread_pct": 5.325140356306081,
+   "p50_ms": 10.968416,
+   "p99_ms": 16.62648832,
+   "core_busy": 0.9884711779448622,
+   "node_cpu": 0.9880828741735734,
+   "node_cpu_us_per_request": 174.71957458530983,
+   "postgres_cpu": 1.6405996052888772,
+   "oha_cpu": 0.11694765034803102,
+   "node_pss_mb": 187.5927734375,
+   "statements_per_request": 6.0040139693205425,
+   "postgres_exec_ms_per_request": 0.049260421732018916,
+   "statements": [
+    {
+     "query": "INSERT INTO posts (user_id, title, body)\n         VALUES ($1, $2, $3) RETURNING id, title, body, created_at AS \"createdAt\"",
+     "calls": 339542,
+     "total_ms": 4768.7
+    },
+    {
+     "query": "COMMIT",
+     "calls": 113185,
+     "total_ms": 26.2
+    },
+    {
+     "query": "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING id, name, email, created_at AS \"createdAt\"",
+     "calls": 113179,
+     "total_ms": 756.4
+    },
+    {
+     "query": "BEGIN",
+     "calls": 113178,
+     "total_ms": 20.3
+    }
+   ],
+   "mac_background_cpu_pct": [
+    101,
+    75,
+    34,
+    98,
+    22
+   ]
+  },
+  "prisma/feed": {
+   "rps": 1790.35,
+   "rps_runs": [
+    1773.5,
+    1779.6,
+    1790.35,
+    1851.85,
+    1883.6
+   ],
+   "spread_pct": 6.149635546122262,
+   "p50_ms": 33.05525,
+   "p99_ms": 74.05883696,
+   "core_busy": 0.9939879759519038,
+   "node_cpu": 0.9922223311385986,
+   "node_cpu_us_per_request": 554.2057872140077,
+   "postgres_cpu": 0.5063886061637417,
+   "oha_cpu": 0.05583334791501641,
+   "node_pss_mb": 291.271484375,
+   "statements_per_request": 3.007512497556344,
+   "postgres_exec_ms_per_request": 0.05116038763370291,
+   "statements": [
+    {
+     "query": "SELECT \"public\".\"comments\".\"id\", \"public\".\"comments\".\"author\", \"public\".\"comments\".\"body\", \"public\".\"comments\".\"created_at\", \"public\".\"comments\".\"post_id\" FROM \"public\".\"comments\" WHERE \"public\".\"comments\".\"post_id\" IN ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) ORDER BY \"public\".\"comments\".\"id\" ASC OFFSET $11",
+     "calls": 35915,
+     "total_ms": 1066.4
+    },
+    {
+     "query": "SELECT \"public\".\"posts\".\"id\", \"public\".\"posts\".\"title\", \"public\".\"posts\".\"body\", \"public\".\"posts\".\"created_at\", \"public\".\"posts\".\"user_id\" FROM \"public\".\"posts\" WHERE \"public\".\"posts\".\"user_id\" = $1 ORDER BY \"public\".\"posts\".\"id\" ASC OFFSET $2",
+     "calls": 35897,
+     "total_ms": 510.8
+    },
+    {
+     "query": "SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"name\", \"public\".\"users\".\"email\", \"public\".\"users\".\"created_at\" FROM \"public\".\"users\" WHERE (\"public\".\"users\".\"id\" = $1 AND $4=$5) LIMIT $2 OFFSET $3",
+     "calls": 35878,
+     "total_ms": 254.7
+    }
+   ],
+   "mac_background_cpu_pct": [
+    118,
+    96,
+    28,
+    115,
+    93
+   ]
+  },
+  "prisma/list1000": {
+   "rps": 296.8,
+   "rps_runs": [
+    291.1,
+    291.75,
+    296.8,
+    302.85,
+    314.75
+   ],
+   "spread_pct": 7.968328840970343,
+   "p50_ms": 209.7017085,
+   "p99_ms": 261.4208477,
+   "core_busy": 1.0,
+   "node_cpu": 0.9971668590000995,
+   "node_cpu_us_per_request": 3359.7266138817367,
+   "postgres_cpu": 0.11026869537810297,
+   "oha_cpu": 0.021666820344364887,
+   "node_pss_mb": 321.8271484375,
+   "statements_per_request": 1.0126347708894878,
+   "postgres_exec_ms_per_request": 0.2605121293800539,
+   "statements": [
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"name\", \"t0\".\"email\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"users\" AS \"t0\" ORDER BY \"t0\".\"id\" ASC LIMIT $1",
+     "calls": 6011,
+     "total_ms": 1546.4
+    }
+   ],
+   "mac_background_cpu_pct": [
+    143,
+    81,
+    22,
+    20,
+    19
+   ]
+  },
+  "prisma/list50": {
+   "rps": 3550.25,
+   "rps_runs": [
+    3422.25,
+    3506.95,
+    3550.25,
+    3820.55,
+    3844.55
+   ],
+   "spread_pct": 11.894936976269282,
+   "p50_ms": 15.500375,
+   "p99_ms": 39.194498320000015,
+   "core_busy": 0.9994994994994995,
+   "node_cpu": 0.9972221945139792,
+   "node_cpu_us_per_request": 280.8878795898822,
+   "postgres_cpu": 0.30499906298586477,
+   "oha_cpu": 0.09138834388875558,
+   "node_pss_mb": 277.708984375,
+   "statements_per_request": 1.001394268009295,
+   "postgres_exec_ms_per_request": 0.01884374339835223,
+   "statements": [
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"name\", \"t0\".\"email\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"users\" AS \"t0\" ORDER BY \"t0\".\"id\" ASC LIMIT $1",
+     "calls": 71104,
+     "total_ms": 1338.0
+    }
+   ],
+   "mac_background_cpu_pct": [
+    88,
+    116,
+    116,
+    99,
+    11
+   ]
+  },
+  "prisma/loop": {
+   "rps": 913.9,
+   "rps_runs": [
+    893.7,
+    910.5,
+    913.9,
+    954.55,
+    983.65
+   ],
+   "spread_pct": 9.842433526644045,
+   "p50_ms": 69.110041,
+   "p99_ms": 92.23722249999999,
+   "core_busy": 1.0,
+   "node_cpu": 0.9983058745072161,
+   "node_cpu_us_per_request": 1092.3578887265742,
+   "postgres_cpu": 0.7685870844373309,
+   "oha_cpu": 0.03249861694389231,
+   "node_pss_mb": 284.912109375,
+   "statements_per_request": 12.06133056133056,
+   "postgres_exec_ms_per_request": 0.11183389867600393,
+   "statements": [
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"author\", \"t0\".\"body\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"comments\" AS \"t0\" WHERE \"t0\".\"post_id\" = $1 ORDER BY \"t0\".\"id\" ASC",
+     "calls": 183767,
+     "total_ms": 1683.8
+    },
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"title\", \"t0\".\"body\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"posts\" AS \"t0\" WHERE \"t0\".\"user_id\" = $1 ORDER BY \"t0\".\"id\" ASC",
+     "calls": 18348,
+     "total_ms": 230.9
+    },
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"name\", \"t0\".\"email\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"users\" AS \"t0\" WHERE (\"t0\".\"id\" = $1 AND $3=$4) LIMIT $2",
+     "calls": 18342,
+     "total_ms": 129.4
+    }
+   ],
+   "mac_background_cpu_pct": [
+    99,
+    84,
+    31,
+    92,
+    21
+   ]
+  },
+  "prisma/one": {
+   "rps": 7280.7,
+   "rps_runs": [
+    7139.25,
+    7267.85,
+    7280.7,
+    7468.15,
+    7800.45
+   ],
+   "spread_pct": 9.081544356998638,
+   "p50_ms": 7.890083000000001,
+   "p99_ms": 20.989019659999986,
+   "core_busy": 0.9984992496248124,
+   "node_cpu": 0.9983058464095319,
+   "node_cpu_us_per_request": 137.11673965546333,
+   "postgres_cpu": 0.4835963178915008,
+   "oha_cpu": 0.1358297804102317,
+   "node_pss_mb": 281.591796875,
+   "statements_per_request": 1.000439518178197,
+   "postgres_exec_ms_per_request": 0.0058215556196519564,
+   "statements": [
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"name\", \"t0\".\"email\", \"t0\".\"created_at\" AS \"createdAt\" FROM \"public\".\"users\" AS \"t0\" WHERE (\"t0\".\"id\" = $1 AND $3=$4) LIMIT $2",
+     "calls": 145678,
+     "total_ms": 847.7
+    }
+   ],
+   "mac_background_cpu_pct": [
+    121,
+    72,
+    80,
+    144,
+    75
+   ]
+  },
+  "prisma/write": {
+   "rps": 2334.9,
+   "rps_runs": [
+    2237.9,
+    2257.05,
+    2334.9,
+    2358.35,
+    2389.45
+   ],
+   "spread_pct": 6.490641997515942,
+   "p50_ms": 25.144562500000003,
+   "p99_ms": 48.11080021999997,
+   "core_busy": 0.9989974937343359,
+   "node_cpu": 0.9963886655835998,
+   "node_cpu_us_per_request": 426.73719027949795,
+   "postgres_cpu": 0.800000849203246,
+   "oha_cpu": 0.05694362221950211,
+   "node_pss_mb": 295.5458984375,
+   "statements_per_request": 6.012998415349694,
+   "postgres_exec_ms_per_request": 0.04769369137864577,
+   "statements": [
+    {
+     "query": "SELECT \"public\".\"posts\".\"id\", \"public\".\"posts\".\"title\", \"public\".\"posts\".\"body\", \"public\".\"posts\".\"created_at\", \"public\".\"posts\".\"user_id\" FROM \"public\".\"posts\" WHERE \"public\".\"posts\".\"user_id\" = $1 ORDER BY \"public\".\"posts\".\"id\" ASC OFFSET $2",
+     "calls": 46803,
+     "total_ms": 358.6
+    },
+    {
+     "query": "COMMIT",
+     "calls": 46803,
+     "total_ms": 12.1
+    },
+    {
+     "query": "SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"name\", \"public\".\"users\".\"email\", \"public\".\"users\".\"created_at\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3",
+     "calls": 46802,
+     "total_ms": 233.7
+    },
+    {
+     "query": "INSERT INTO \"public\".\"posts\" (\"user_id\",\"title\",\"body\",\"created_at\") VALUES ($1,$2,$3,$4), ($5,$6,$7,$8), ($9,$10,$11,$12)",
+     "calls": 46798,
+     "total_ms": 1266.2
+    },
+    {
+     "query": "INSERT INTO \"public\".\"users\" (\"name\",\"email\",\"created_at\") VALUES ($1,$2,$3) RETURNING \"public\".\"users\".\"id\"",
+     "calls": 46795,
+     "total_ms": 347.1
+    },
+    {
+     "query": "BEGIN",
+     "calls": 46794,
+     "total_ms": 9.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    91,
+    58,
+    24,
+    8,
+    35
+   ]
+  },
+  "prisma-join/feed": {
+   "rps": 3110.6,
+   "rps_runs": [
+    2856.7,
+    3013.55,
+    3110.6,
+    3143.9,
+    3204.05
+   ],
+   "spread_pct": 11.166655950620472,
+   "p50_ms": 18.3885,
+   "p99_ms": 40.84420962999999,
+   "core_busy": 0.9994984954864594,
+   "node_cpu": 0.9969456388200124,
+   "node_cpu_us_per_request": 320.49946596155485,
+   "postgres_cpu": 1.3369487670190368,
+   "oha_cpu": 0.08416724083369054,
+   "node_pss_mb": 289.1826171875,
+   "statements_per_request": 1.001703851347007,
+   "postgres_exec_ms_per_request": 0.23732559634797146,
+   "statements": [
+    {
+     "query": "SELECT \"t0\".\"id\", \"t0\".\"name\", \"t0\".\"email\", \"t0\".\"created_at\" AS \"createdAt\", \"User_posts\".\"__prisma_data__\" AS \"posts\" FROM \"public\".\"users\" AS \"t0\" LEFT JOIN LATERAL (SELECT COALESCE(JSONB_AGG(\"__prisma_data__\"), $3) AS \"__prisma_data__\" FROM (SELECT \"t3\".\"__prisma_data__\" FROM (SELECT JSONB_BUILD_OBJECT($4, \"t2\".\"id\", $5, \"t2\".\"title\", $6, \"t2\".\"body\", $7, \"t2\".\"created_at\", $8, \"Post_comments\".\"__prisma_data__\") AS \"__prisma_data__\", \"t2\".\"id\" FROM (SELECT \"t1\".* FROM \"public\".\"posts\" AS \"t1\" WHERE \"t0\".\"id\" = \"t1\".\"user_id\" /* root select */) AS \"t2\" LEFT JOIN LATERAL (SELECT COALESCE(JSONB_AGG(\"__prisma_data__\"), $9) AS \"__prisma_data__\" FROM (SELECT \"t7\".\"__prisma_data__\" FROM (SELECT JSONB_BUILD_OBJECT($10, \"t6\".\"id\", $11, \"t6\".\"author\", $12, \"t6\".\"body\", $13, \"t6\".\"created_at\") AS \"__prisma_data__\", \"t6\".\"id\" FROM (SELECT \"t5\".* FROM \"public\".\"comments\" AS \"t5\" WHERE \"t2\".\"id\" = \"t5\".\"post_id\" /* root select */) AS \"t6\" /* inner select */) AS \"t7\" ORDER BY \"t7\".\"id\" ASC /* middle select */) AS \"t8\" /* outer select */) AS \"Post_comments\" ON $14 /* inner select */) AS \"t3\" ORDER BY \"t3\".\"id\" ASC /* middle select */) AS \"t4\" /* outer select */) AS \"User_posts\" ON $15 WHERE (\"t0\".\"id\" = $1 AND $16=$17) LIMIT $2",
+     "calls": 62318,
+     "total_ms": 14764.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    119,
+    164,
+    30,
+    158,
+    13
+   ]
+  },
+  "typeorm/feed": {
+   "rps": 1588.25,
+   "rps_runs": [
+    1512.5,
+    1530.55,
+    1588.25,
+    1611.25,
+    1614.65
+   ],
+   "spread_pct": 6.431607114748942,
+   "p50_ms": 39.84525,
+   "p99_ms": 66.31064012,
+   "core_busy": 0.9995,
+   "node_cpu": 0.9986112219444703,
+   "node_cpu_us_per_request": 628.7493920632585,
+   "postgres_cpu": 0.6927779939584615,
+   "oha_cpu": 0.046944310624963716,
+   "node_pss_mb": 277.166015625,
+   "statements_per_request": 2.00679993703762,
+   "postgres_exec_ms_per_request": 0.10263182748307886,
+   "statements": [
+    {
+     "query": "SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\", \"UserEntity__UserEntity_posts\".\"id\" AS \"UserEntity__UserEntity_posts_id\", \"UserEntity__UserEntity_posts\".\"title\" AS \"UserEntity__UserEntity_posts_title\", \"UserEntity__UserEntity_posts\".\"body\" AS \"UserEntity__UserEntity_posts_body\", \"UserEntity__UserEntity_posts\".\"created_at\" AS \"UserEntity__UserEntity_posts_created_at\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"id\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_id\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"author\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_author\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"body\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_body\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"created_at\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_created_at\" FROM \"users\" \"UserEntity\" LEFT JOIN \"posts\" \"UserEntity__UserEntity_posts\" ON \"UserEntity__UserEntity_posts\".\"user_id\"=\"UserEntity\".\"id\" LEFT JOIN \"comments\" \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\" ON \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"post_id\"=\"UserEntity__UserEntity_posts\".\"id\" WHERE ( ((\"UserEntity\".\"id\" = $1)) ) AND ( \"UserEntity\".\"id\" IN ($2) ) ORDER BY \"UserEntity__UserEntity_posts_id\" ASC, \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_id\" ASC",
+     "calls": 31876,
+     "total_ms": 2141.6
+    },
+    {
+     "query": "SELECT DISTINCT \"distinctAlias\".\"UserEntity_id\" AS \"ids_UserEntity_id\", \"distinctAlias\".\"UserEntity__UserEntity_posts_id\", \"distinctAlias\".\"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_id\" FROM (SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\", \"UserEntity__UserEntity_posts\".\"id\" AS \"UserEntity__UserEntity_posts_id\", \"UserEntity__UserEntity_posts\".\"title\" AS \"UserEntity__UserEntity_posts_title\", \"UserEntity__UserEntity_posts\".\"body\" AS \"UserEntity__UserEntity_posts_body\", \"UserEntity__UserEntity_posts\".\"created_at\" AS \"UserEntity__UserEntity_posts_created_at\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"id\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_id\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"author\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_author\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"body\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_body\", \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"created_at\" AS \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_created_at\" FROM \"users\" \"UserEntity\" LEFT JOIN \"posts\" \"UserEntity__UserEntity_posts\" ON \"UserEntity__UserEntity_posts\".\"user_id\"=\"UserEntity\".\"id\" LEFT JOIN \"comments\" \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\" ON \"0aaecafa39ee924e9518b88c938d3254c2ebd2f1\".\"post_id\"=\"UserEntity__UserEntity_posts\".\"id\" WHERE ((\"UserEntity\".\"id\" = $1))) \"distinctAlias\" ORDER BY \"distinctAlias\".\"UserEntity__UserEntity_posts_id\" ASC, \"distinctAlias\".\"0aaecafa39ee924e9518b88c938d3254c2ebd2f1_id\" ASC, \"UserEntity_id\" ASC LIMIT $2",
+     "calls": 31870,
+     "total_ms": 1118.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    113,
+    87,
+    47,
+    112,
+    20
+   ]
+  },
+  "typeorm/list1000": {
+   "rps": 303.25,
+   "rps_runs": [
+    292.05,
+    300.4,
+    303.25,
+    308.15,
+    320.95
+   ],
+   "spread_pct": 9.530090684253908,
+   "p50_ms": 203.818334,
+   "p99_ms": 316.77226187999975,
+   "core_busy": 1.0,
+   "node_cpu": 0.9963622351602748,
+   "node_cpu_us_per_request": 3285.61330638178,
+   "postgres_cpu": 0.10971779541012472,
+   "oha_cpu": 0.02194403104072349,
+   "node_pss_mb": 301.5283203125,
+   "statements_per_request": 1.0120362737015665,
+   "postgres_exec_ms_per_request": 0.2593899422918384,
+   "statements": [
+    {
+     "query": "SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\" FROM \"users\" \"UserEntity\" ORDER BY \"UserEntity_id\" ASC LIMIT $1",
+     "calls": 6138,
+     "total_ms": 1573.2
+    }
+   ],
+   "mac_background_cpu_pct": [
+    95,
+    68,
+    28,
+    81,
+    16
+   ]
+  },
+  "typeorm/list50": {
+   "rps": 4019.1,
+   "rps_runs": [
+    3496.4,
+    3962.35,
+    4019.1,
+    4065.25,
+    4097.4
+   ],
+   "spread_pct": 14.953596576347927,
+   "p50_ms": 14.4078125,
+   "p99_ms": 34.74021319,
+   "core_busy": 0.999498997995992,
+   "node_cpu": 0.9966664997222671,
+   "node_cpu_us_per_request": 247.9825084527051,
+   "postgres_cpu": 0.27833197541634247,
+   "oha_cpu": 0.09111126006948408,
+   "node_pss_mb": 248.7373046875,
+   "statements_per_request": 1.0013311437884103,
+   "postgres_exec_ms_per_request": 0.01794431589161753,
+   "statements": [
+    {
+     "query": "SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\" FROM \"users\" \"UserEntity\" ORDER BY \"UserEntity_id\" ASC LIMIT $1",
+     "calls": 80489,
+     "total_ms": 1442.4
+    }
+   ],
+   "mac_background_cpu_pct": [
+    170,
+    84,
+    30,
+    19,
+    16
+   ]
+  },
+  "typeorm/loop": {
+   "rps": 1010.7,
+   "rps_runs": [
+    919.55,
+    985.5,
+    1010.7,
+    1040.7,
+    1076.95
+   ],
+   "spread_pct": 15.573364994558236,
+   "p50_ms": 60.872396499999994,
+   "p99_ms": 96.97830811999998,
+   "core_busy": 1.0,
+   "node_cpu": 0.9986381802845494,
+   "node_cpu_us_per_request": 988.0658754175813,
+   "postgres_cpu": 0.8183532961855946,
+   "oha_cpu": 0.033612087569694304,
+   "node_pss_mb": 258.1572265625,
+   "statements_per_request": 12.054120906302563,
+   "postgres_exec_ms_per_request": 0.10661422776293658,
+   "statements": [
+    {
+     "query": "SELECT \"CommentEntity\".\"id\" AS \"CommentEntity_id\", \"CommentEntity\".\"author\" AS \"CommentEntity_author\", \"CommentEntity\".\"body\" AS \"CommentEntity_body\", \"CommentEntity\".\"created_at\" AS \"CommentEntity_created_at\" FROM \"comments\" \"CommentEntity\" WHERE ((\"CommentEntity\".\"post_id\" = $1)) ORDER BY \"CommentEntity_id\" ASC",
+     "calls": 203097,
+     "total_ms": 1775.4
+    },
+    {
+     "query": "SELECT \"PostEntity\".\"id\" AS \"PostEntity_id\", \"PostEntity\".\"title\" AS \"PostEntity_title\", \"PostEntity\".\"body\" AS \"PostEntity_body\", \"PostEntity\".\"created_at\" AS \"PostEntity_created_at\" FROM \"posts\" \"PostEntity\" WHERE ((\"PostEntity\".\"user_id\" = $1)) ORDER BY \"PostEntity_id\" ASC",
+     "calls": 20287,
+     "total_ms": 243.7
+    },
+    {
+     "query": "SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\" FROM \"users\" \"UserEntity\" WHERE ((\"UserEntity\".\"id\" = $1)) LIMIT $2",
+     "calls": 20278,
+     "total_ms": 136.0
+    }
+   ],
+   "mac_background_cpu_pct": [
+    101,
+    86,
+    28,
+    122,
+    69
+   ]
+  },
+  "typeorm/one": {
+   "rps": 10705.7,
+   "rps_runs": [
+    9922.85,
+    9963.1,
+    10705.7,
+    10852.85,
+    10917.0
+   ],
+   "spread_pct": 9.286174654623235,
+   "p50_ms": 5.745083,
+   "p99_ms": 9.57869353999999,
+   "core_busy": 0.997997997997998,
+   "node_cpu": 0.9983057638821524,
+   "node_cpu_us_per_request": 93.24992890536372,
+   "postgres_cpu": 0.6330384652731136,
+   "oha_cpu": 0.19388365069336094,
+   "node_pss_mb": 254.263671875,
+   "statements_per_request": 1.000382973556143,
+   "postgres_exec_ms_per_request": 0.005010882053485527,
+   "statements": [
+    {
+     "query": "SELECT \"UserEntity\".\"id\" AS \"UserEntity_id\", \"UserEntity\".\"name\" AS \"UserEntity_name\", \"UserEntity\".\"email\" AS \"UserEntity_email\", \"UserEntity\".\"created_at\" AS \"UserEntity_created_at\" FROM \"users\" \"UserEntity\" WHERE ((\"UserEntity\".\"id\" = $1)) LIMIT $2",
+     "calls": 214196,
+     "total_ms": 1072.9
+    }
+   ],
+   "mac_background_cpu_pct": [
+    146,
+    117,
+    28,
+    43,
+    18
+   ]
+  },
+  "typeorm/write": {
+   "rps": 4219.05,
+   "rps_runs": [
+    3681.25,
+    4209.8,
+    4219.05,
+    4274.65,
+    4292.8
+   ],
+   "spread_pct": 14.494969246631353,
+   "p50_ms": 14.502541,
+   "p99_ms": 24.610008399999998,
+   "core_busy": 0.9949924887330996,
+   "node_cpu": 0.9947225812921388,
+   "node_cpu_us_per_request": 235.76932752447559,
+   "postgres_cpu": 0.8869400432275214,
+   "oha_cpu": 0.0908337835459697,
+   "node_pss_mb": 202.6552734375,
+   "statements_per_request": 4.004088598144132,
+   "postgres_exec_ms_per_request": 0.03363316386390301,
+   "statements": [
+    {
+     "query": "COMMIT",
+     "calls": 84470,
+     "total_ms": 20.0
+    },
+    {
+     "query": "INSERT INTO \"posts\"(\"id\", \"user_id\", \"title\", \"body\", \"created_at\") VALUES (DEFAULT, $1, $2, $3, DEFAULT), (DEFAULT, $4, $5, $6, DEFAULT), (DEFAULT, $7, $8, $9, DEFAULT) RETURNING \"id\", \"created_at\"",
+     "calls": 84469,
+     "total_ms": 2236.2
+    },
+    {
+     "query": "INSERT INTO \"users\"(\"id\", \"name\", \"email\", \"created_at\") VALUES (DEFAULT, $1, $2, DEFAULT) RETURNING \"id\", \"created_at\"",
+     "calls": 84467,
+     "total_ms": 566.6
+    },
+    {
+     "query": "START TRANSACTION",
+     "calls": 84463,
+     "total_ms": 15.2
+    }
+   ],
+   "mac_background_cpu_pct": [
+    136,
+    57,
+    17,
+    51,
+    13
+   ]
+  }
+ }
+}

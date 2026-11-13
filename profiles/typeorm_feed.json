@@ -1,0 +1,154 @@
+{
+ "busy_s": 14.837243,
+ "packages": {
+  "node internals / GC / native": 0.28003868373659446,
+  "statuses": 4.6976382337338546e-05,
+  "(garbage collector)": 0.09564809311271642,
+  "mime-types": 0.0016348724624918524,
+  "debug": 0.0005732197012612113,
+  "cookie": 6.881332333776565e-05,
+  "ansis": 7.622709960334275e-05,
+  "typeorm": 0.3492272115513644,
+  "tslib": 7.049827248903317e-05,
+  "fdir": 7.353118096131471e-05,
+  "reflect-metadata": 7.056567045508387e-05,
+  "pg": 0.059175481590481464,
+  "pg-types": 0.012526855562047478,
+  "pg-connection-string": 0.00017934598766091518,
+  "pg-protocol": 0.03197757157444951,
+  "proxy-addr": 6.867852740566425e-05,
+  "path-to-regexp": 0.0002896090601198619,
+  "postgres-date": 0.05894167804625158,
+  "router": 0.0062425344115480215,
+  "express": 0.08976007200259509,
+  "body-parser": 0.0015167912259710244,
+  "content-type": 0.0022483287494853323,
+  "parseurl": 0.00025941477132914787,
+  "our app": 0.00457989398704328,
+  "pg-pool": 0.0031472828206695813,
+  "etag": 0.0014863947432821583,
+  "type-is": 7.137444604769228e-05
+ },
+ "functions": [
+  {
+   "name": "(garbage collector)",
+   "package": "node internals / GC / native",
+   "share": 0.09564809311271642
+  },
+  {
+   "name": "stringify",
+   "package": "express",
+   "share": 0.08072645302095545
+  },
+  {
+   "name": "writev",
+   "package": "node internals / GC / native",
+   "share": 0.06436451839469098
+  },
+  {
+   "name": "parseDate",
+   "package": "postgres-date",
+   "share": 0.05887205594732121
+  },
+  {
+   "name": "utf8Slice",
+   "package": "node internals / GC / native",
+   "share": 0.036831168701624686
+  },
+  {
+   "name": "transformColumns",
+   "package": "typeorm",
+   "share": 0.035446342693180935
+  },
+  {
+   "name": "parseRow",
+   "package": "pg",
+   "share": 0.03005234867421124
+  },
+  {
+   "name": "emit",
+   "package": "node internals / GC / native",
+   "share": 0.020477658821116563
+  },
+  {
+   "name": "group",
+   "package": "typeorm",
+   "share": 0.01738678809803142
+  },
+  {
+   "name": "(program)",
+   "package": "node internals / GC / native",
+   "share": 0.017178730576832908
+  },
+  {
+   "name": "toString",
+   "package": "node internals / GC / native",
+   "share": 0.016490125557692893
+  },
+  {
+   "name": "buildEscapedEntityColumnSelects",
+   "package": "typeorm",
+   "share": 0.014464007902276723
+  },
+  {
+   "name": "replacePropertyNamesForTheWholeQuery",
+   "package": "typeorm",
+   "share": 0.01435307085015727
+  },
+  {
+   "name": "transformRawResultsGroup",
+   "package": "typeorm",
+   "share": 0.01277622803643507
+  },
+  {
+   "name": "escape",
+   "package": "typeorm",
+   "share": 0.011880374271689155
+  },
+  {
+   "name": "addFields",
+   "package": "pg",
+   "share": 0.011413171571025695
+  },
+  {
+   "name": "createSelectExpression",
+   "package": "typeorm",
+   "share": 0.010839008298239774
+  },
+  {
+   "name": "parseDataRowMessage",
+   "package": "pg-protocol",
+   "share": 0.01017898001670526
+  },
+  {
+   "name": "getQuery",
+   "package": "typeorm",
+   "share": 0.00983484600205038
+  },
+  {
+   "name": "RegExp: (\\d{1,})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2})(\\.\\d{1,})?.*?( BC)?$",
+   "package": "node internals / GC / native",
+   "share": 0.008905091060380961
+  },
+  {
+   "name": "runMicrotasks",
+   "package": "node internals / GC / native",
+   "share": 0.008650394146675363
+  },
+  {
+   "name": "transform",
+   "package": "typeorm",
+   "share": 0.008358358759777676
+  },
+  {
+   "name": "transformJoins",
+   "package": "typeorm",
+   "share": 0.008240816706985253
+  },
+  {
+   "name": "prepareHydratedValue",
+   "package": "typeorm",
+   "share": 0.008084520823713678
+  }
+ ]
+}

@@ -1,0 +1,13 @@
+# The server under test is the one Node process running an ORM app; then every Postgres backend as "postgres", oha,
+# and the monitoring itself. Memory is gathered from smaps.
+process_names:
+  - name: server
+    cmdline:
+      - 'dist/apps/server\.js'
+  - name: "{{.ExeBase}}"
+    exe:
+      - postgres
+      - oha
+      - prometheus
+      - process-exporter
+      - grafana

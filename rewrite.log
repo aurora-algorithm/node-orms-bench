@@ -1,0 +1,23 @@
+prisma write: 1,626 req/s, p50 33 ms, p99 125 ms, core busy 0.931, 5.01 statements/request
+  prisma write run 1 disturbed (Mac background 349%), retry 1
+prisma write: 1,743 req/s, p50 31 ms, p99 118 ms, core busy 0.974, 5.01 statements/request
+  prisma write run 1 disturbed (Mac background 364%), retry 2
+prisma write: 1,844 req/s, p50 32 ms, p99 76 ms, core busy 0.964, 5.01 statements/request
+  prisma write run 1 disturbed (Mac background 320%), retry 3
+prisma write: 1,265 req/s, p50 44 ms, p99 150 ms, core busy 0.920, 5.02 statements/request
+  prisma write run 1 disturbed (Mac background 385%), retry 4
+prisma write: 1,906 req/s, p50 29 ms, p99 91 ms, core busy 0.959, 5.01 statements/request
+  prisma write run 1 disturbed (Mac background 309%), retry 5
+prisma write: 1,854 req/s, p50 31 ms, p99 94 ms, core busy 0.944, 5.01 statements/request
+  prisma write run 1 disturbed (Mac background 392%), retry 6
+prisma write: 2,381 req/s, p50 25 ms, p99 50 ms, core busy 0.994, 5.01 statements/request
+round 1 done
+prisma write: 2,504 req/s, p50 24 ms, p99 46 ms, core busy 0.997, 5.01 statements/request
+round 2 done
+prisma write: 2,343 req/s, p50 24 ms, p99 60 ms, core busy 0.995, 5.01 statements/request
+round 3 done
+prisma write: 2,290 req/s, p50 25 ms, p99 55 ms, core busy 0.991, 5.01 statements/request
+round 4 done
+prisma write: 2,184 req/s, p50 26 ms, p99 65 ms, core busy 0.989, 5.01 statements/request
+round 5 done
+exit 0

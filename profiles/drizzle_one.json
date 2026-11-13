@@ -1,0 +1,150 @@
+{
+ "busy_s": 14.649327,
+ "packages": {
+  "node internals / GC / native": 0.4622967321297422,
+  "debug": 0.0021091071282660287,
+  "(garbage collector)": 0.01898496770534237,
+  "http-errors": 7.529356126735379e-05,
+  "mime-types": 0.004584510947158187,
+  "get-intrinsic": 7.317742309936832e-05,
+  "path-to-regexp": 0.0013124835018018233,
+  "our app": 0.008193686986439718,
+  "pg": 0.05602482625993672,
+  "drizzle-orm": 0.312815598969154,
+  "pg-protocol": 0.01826213586467146,
+  "express": 0.06520477015770076,
+  "content-type": 0.007195074558715223,
+  "router": 0.016060396494664907,
+  "parseurl": 0.0005070540100579364,
+  "fresh": 0.0001488122969744617,
+  "pg-pool": 0.016800157440679697,
+  "finalhandler": 7.229001031924538e-05,
+  "type-is": 0.00014642310872028456,
+  "etag": 0.002366661622066324,
+  "pg-types": 0.002673023818773381,
+  "body-parser": 0.00402107209430167,
+  "on-finished": 7.174391014686203e-05
+ },
+ "functions": [
+  {
+   "name": "writev",
+   "package": "node internals / GC / native",
+   "share": 0.19713287852745726
+  },
+  {
+   "name": "is",
+   "package": "drizzle-orm",
+   "share": 0.06114922549001739
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.04276469492421051
+  },
+  {
+   "name": "buildQueryFromSourceParams",
+   "package": "drizzle-orm",
+   "share": 0.041900150088806126
+  },
+  {
+   "name": "(program)",
+   "package": "node internals / GC / native",
+   "share": 0.041613242710740225
+  },
+  {
+   "name": "buildSelection",
+   "package": "drizzle-orm",
+   "share": 0.03339764345488363
+  },
+  {
+   "name": "stringify",
+   "package": "express",
+   "share": 0.02694144242940307
+  },
+  {
+   "name": "handle",
+   "package": "express",
+   "share": 0.02400437917728234
+  },
+  {
+   "name": "addFields",
+   "package": "pg",
+   "share": 0.023072186183023972
+  },
+  {
+   "name": "buildSelectQuery",
+   "package": "drizzle-orm",
+   "share": 0.019190710945287792
+  },
+  {
+   "name": "(garbage collector)",
+   "package": "node internals / GC / native",
+   "share": 0.01898496770534237
+  },
+  {
+   "name": "cloneQueryConfig",
+   "package": "pg",
+   "share": 0.017441210780536197
+  },
+  {
+   "name": "getSQL",
+   "package": "drizzle-orm",
+   "share": 0.015959436225295536
+  },
+  {
+   "name": "get",
+   "package": "node internals / GC / native",
+   "share": 0.014213553974185982
+  },
+  {
+   "name": "Hash",
+   "package": "node internals / GC / native",
+   "share": 0.011214440089978194
+  },
+  {
+   "name": "sql",
+   "package": "drizzle-orm",
+   "share": 0.01067127520602141
+  },
+  {
+   "name": "(anonymous)",
+   "package": "node internals / GC / native",
+   "share": 0.010632775143868383
+  },
+  {
+   "name": "runMicrotasks",
+   "package": "node internals / GC / native",
+   "share": 0.01024661405947181
+  },
+  {
+   "name": "prepareTyping",
+   "package": "drizzle-orm",
+   "share": 0.00945640711003311
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.008605309991373666
+  },
+  {
+   "name": "writevGeneric",
+   "package": "node internals / GC / native",
+   "share": 0.007500003242469773
+  },
+  {
+   "name": "utf8Slice",
+   "package": "node internals / GC / native",
+   "share": 0.006947964230711759
+  },
+  {
+   "name": "eq",
+   "package": "drizzle-orm",
+   "share": 0.006746999367274688
+  },
+  {
+   "name": "startActiveSpan",
+   "package": "drizzle-orm",
+   "share": 0.00651934385791238
+  }
+ ]
+}

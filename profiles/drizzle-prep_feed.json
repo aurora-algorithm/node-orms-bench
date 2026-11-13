@@ -1,0 +1,147 @@
+{
+ "busy_s": 15.075752,
+ "packages": {
+  "node internals / GC / native": 0.26943213181007486,
+  "mime-types": 0.002533936615566507,
+  "(garbage collector)": 0.01540367604879677,
+  "side-channel": 6.911761350279575e-05,
+  "pg-types": 0.0018194780598672624,
+  "drizzle-orm": 0.29493885280150534,
+  "pg": 0.11923179686160928,
+  "pg-pool": 0.0088353801521808,
+  "pg-protocol": 0.012376961361529428,
+  "path-to-regexp": 0.00018121815747566025,
+  "express": 0.25765460986622757,
+  "content-type": 0.003485464605679372,
+  "router": 0.006365055620442682,
+  "etag": 0.00219710433018532,
+  "body-parser": 0.0021292470186561837,
+  "debug": 0.0007023198577424197,
+  "type-is": 0.00014095482600138287,
+  "our app": 0.0018438881191465606,
+  "parseurl": 0.0003781569237806512,
+  "on-finished": 0.00028064935002910634
+ },
+ "functions": [
+  {
+   "name": "stringify",
+   "package": "express",
+   "share": 0.24079555036458547
+  },
+  {
+   "name": "writev",
+   "package": "node internals / GC / native",
+   "share": 0.09908368086713021
+  },
+  {
+   "name": "_parseRowAsArray",
+   "package": "pg",
+   "share": 0.0894220069420086
+  },
+  {
+   "name": "mapRelationalRow",
+   "package": "drizzle-orm",
+   "share": 0.07981134208097879
+  },
+  {
+   "name": "is",
+   "package": "drizzle-orm",
+   "share": 0.07242981975293836
+  },
+  {
+   "name": "mapFromDriverValue",
+   "package": "drizzle-orm",
+   "share": 0.052661386310944885
+  },
+  {
+   "name": "(anonymous)",
+   "package": "drizzle-orm",
+   "share": 0.04618675075047666
+  },
+  {
+   "name": "get",
+   "package": "drizzle-orm",
+   "share": 0.02756565642629303
+  },
+  {
+   "name": "(program)",
+   "package": "node internals / GC / native",
+   "share": 0.021476009952936345
+  },
+  {
+   "name": "update",
+   "package": "node internals / GC / native",
+   "share": 0.018265158514149078
+  },
+  {
+   "name": "(garbage collector)",
+   "package": "node internals / GC / native",
+   "share": 0.01540367604879677
+  },
+  {
+   "name": "get",
+   "package": "node internals / GC / native",
+   "share": 0.013013878180007207
+  },
+  {
+   "name": "addFields",
+   "package": "pg",
+   "share": 0.011182792075645712
+  },
+  {
+   "name": "cloneQueryConfig",
+   "package": "pg",
+   "share": 0.01102963222000468
+  },
+  {
+   "name": "handle",
+   "package": "express",
+   "share": 0.010713296424616166
+  },
+  {
+   "name": "(anonymous)",
+   "package": "node internals / GC / native",
+   "share": 0.009722765405002682
+  },
+  {
+   "name": "Hash",
+   "package": "node internals / GC / native",
+   "share": 0.005199740616587485
+  },
+  {
+   "name": "mapFromDriverValue",
+   "package": "drizzle-orm",
+   "share": 0.005117754656616798
+  },
+  {
+   "name": "runMicrotasks",
+   "package": "node internals / GC / native",
+   "share": 0.004139760325057085
+  },
+  {
+   "name": "utf8Slice",
+   "package": "node internals / GC / native",
+   "share": 0.004087092968894686
+  },
+  {
+   "name": "toString",
+   "package": "node internals / GC / native",
+   "share": 0.0038670707769668804
+  },
+  {
+   "name": "writevGeneric",
+   "package": "node internals / GC / native",
+   "share": 0.0037062827778010675
+  },
+  {
+   "name": "insert",
+   "package": "node internals / GC / native",
+   "share": 0.0032681620127473577
+  },
+  {
+   "name": "emit",
+   "package": "node internals / GC / native",
+   "share": 0.003098618231448753
+  }
+ ]
+}

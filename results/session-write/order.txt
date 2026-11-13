@@ -1,0 +1,5 @@
+round 1: drizzle write,prisma write,typeorm write,kysely write,node-pg write,
+round 2: kysely write,drizzle write,node-pg write,prisma write,typeorm write,
+round 3: typeorm write,kysely write,node-pg write,drizzle write,prisma write,
+round 4: kysely write,typeorm write,drizzle write,node-pg write,prisma write,
+round 5: node-pg write,kysely write,drizzle write,typeorm write,prisma write,

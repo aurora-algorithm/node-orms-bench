@@ -1,0 +1,25 @@
+### Test 1: one user by id
+GET http://localhost:8301/users/42
+
+### Test 2: a list of users
+GET http://localhost:8301/users?limit=50
+
+### Test 3: a new user with three posts
+POST http://localhost:8301/users
+content-type: application/json
+
+{
+  "name": "Ada",
+  "email": "ada@example.com",
+  "posts": [
+    { "title": "First", "body": "Hello" },
+    { "title": "Second", "body": "Again" },
+    { "title": "Third", "body": "Done" }
+  ]
+}
+
+### Test 4: a user with posts and comments
+GET http://localhost:8301/users/42/feed
+
+### Test 5: one query for each post
+GET http://localhost:8301/users/42/feed-loop

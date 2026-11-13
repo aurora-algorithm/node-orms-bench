@@ -1,0 +1,153 @@
+{
+ "busy_s": 14.771579,
+ "packages": {
+  "node internals / GC / native": 0.29255843264961723,
+  "debug": 0.0007191512836914727,
+  "depd": 4.935152836402933e-05,
+  "mime-types": 0.00139138815153072,
+  "(garbage collector)": 0.12459263833609122,
+  "once": 7.108244826094759e-05,
+  "cookie-signature": 6.823915033050969e-05,
+  "@prisma/client-runtime-utils": 0.0011446305097105732,
+  "@prisma/client": 0.3133719827785506,
+  "wasm://wasm/00d1cb12": 0.0031375115686684543,
+  "pg-pool": 0.012001018983820213,
+  "pg": 0.04850429327832861,
+  "pg-protocol": 0.03218545559685935,
+  "express": 0.1060185915127963,
+  "path-to-regexp": 0.0006526045726052712,
+  "router": 0.007189346514682012,
+  "@prisma/adapter-pg": 0.023736798889272433,
+  "our app": 0.004965345952521393,
+  "pg-types": 0.012861048910207907,
+  "parseurl": 0.00026503598565867604,
+  "@prisma/debug": 0.008660211613125449,
+  "content-type": 0.003132705041214619,
+  "body-parser": 0.0010377360470400626,
+  "etag": 0.0014694434494782176,
+  "fresh": 0.0001439250333359758,
+  "on-finished": 7.203021423776022e-05
+ },
+ "functions": [
+  {
+   "name": "(garbage collector)",
+   "package": "node internals / GC / native",
+   "share": 0.12459263833609122
+  },
+  {
+   "name": "stringify",
+   "package": "express",
+   "share": 0.0942815253535184
+  },
+  {
+   "name": "writev",
+   "package": "node internals / GC / native",
+   "share": 0.08524092109584222
+  },
+  {
+   "name": "(anonymous)",
+   "package": "@prisma/client",
+   "share": 0.03702617032342988
+  },
+  {
+   "name": "Va",
+   "package": "@prisma/client",
+   "share": 0.03221294081018691
+  },
+  {
+   "name": "interpretNode",
+   "package": "@prisma/client",
+   "share": 0.029650317004025095
+  },
+  {
+   "name": "(program)",
+   "package": "node internals / GC / native",
+   "share": 0.0261111557538974
+  },
+  {
+   "name": "utf8Slice",
+   "package": "node internals / GC / native",
+   "share": 0.02578045312555956
+  },
+  {
+   "name": "Hn",
+   "package": "@prisma/client",
+   "share": 0.024434828531194937
+  },
+  {
+   "name": "vp",
+   "package": "@prisma/client",
+   "share": 0.01861757636065853
+  },
+  {
+   "name": "runMicrotasks",
+   "package": "node internals / GC / native",
+   "share": 0.0168041615591671
+  },
+  {
+   "name": "normalize_timestamptz",
+   "package": "@prisma/adapter-pg",
+   "share": 0.016240037710254267
+  },
+  {
+   "name": "addFields",
+   "package": "pg",
+   "share": 0.01319628727572049
+  },
+  {
+   "name": "Ae",
+   "package": "@prisma/client",
+   "share": 0.013151945367519614
+  },
+  {
+   "name": "Zs",
+   "package": "@prisma/client",
+   "share": 0.012948920355772392
+  },
+  {
+   "name": "cloneQueryConfig",
+   "package": "pg",
+   "share": 0.012342620920891395
+  },
+  {
+   "name": "toString",
+   "package": "node internals / GC / native",
+   "share": 0.011923437568861122
+  },
+  {
+   "name": "Fp",
+   "package": "@prisma/client",
+   "share": 0.010973369874676227
+  },
+  {
+   "name": "Od",
+   "package": "@prisma/client",
+   "share": 0.010338908250769942
+  },
+  {
+   "name": "emit",
+   "package": "node internals / GC / native",
+   "share": 0.00955097623618978
+  },
+  {
+   "name": "parseInteger",
+   "package": "pg-types",
+   "share": 0.009128204912961574
+  },
+  {
+   "name": "(anonymous)",
+   "package": "node internals / GC / native",
+   "share": 0.008938584020029275
+  },
+  {
+   "name": "tt",
+   "package": "@prisma/client",
+   "share": 0.008320843695856754
+  },
+  {
+   "name": "(anonymous)",
+   "package": "pg-protocol",
+   "share": 0.007803769657935689
+  }
+ ]
+}

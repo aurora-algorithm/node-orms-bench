@@ -1,0 +1,277 @@
+{
+ "versions": [
+  "node v24.22.0",
+  "express 5.3.0",
+  "pg 8.23.1",
+  "kysely 0.29.7",
+  "drizzle-orm 0.45.4",
+  "@prisma/client 7.10.1",
+  "@prisma/adapter-pg 7.10.1",
+  "typeorm 1.1.2",
+  "oha 1.16.0",
+  "postgres 17.11 (Ubuntu 17.11-1.pgdg24.04+2)",
+  "cores: node 2, oha 6-8, postgres 3-5, monitoring 0-1"
+ ],
+ "configs": {
+  "drizzle/write": {
+   "rps": 3454.1,
+   "rps_runs": [
+    3104.2,
+    3155.65,
+    3454.1,
+    3471.85,
+    3491.35
+   ],
+   "spread_pct": 11.208418980342206,
+   "p50_ms": 17.5633955,
+   "p99_ms": 31.69226931000002,
+   "core_busy": 0.9939668174962293,
+   "node_cpu": 0.9893896096669297,
+   "node_cpu_us_per_request": 286.43919100979406,
+   "postgres_cpu": 0.7452370688473269,
+   "oha_cpu": 0.0772184847876081,
+   "node_pss_mb": 213.4638671875,
+   "statements_per_request": 4.005746793665499,
+   "postgres_exec_ms_per_request": 0.03411742566804667,
+   "statements": [
+    {
+     "query": "commit",
+     "calls": 69185,
+     "total_ms": 17.0
+    },
+    {
+     "query": "insert into \"posts\" (\"id\", \"user_id\", \"title\", \"body\", \"created_at\") values (default, $1, $2, $3, default), (default, $4, $5, $6, default), (default, $7, $8, $9, default) returning \"id\", \"title\", \"body\", \"created_at\"",
+     "calls": 69182,
+     "total_ms": 1848.1
+    },
+    {
+     "query": "insert into \"users\" (\"id\", \"name\", \"email\", \"created_at\") values (default, $1, $2, default) returning \"id\", \"name\", \"email\", \"created_at\"",
+     "calls": 69180,
+     "total_ms": 478.9
+    },
+    {
+     "query": "begin",
+     "calls": 69178,
+     "total_ms": 12.9
+    }
+   ],
+   "mac_background_cpu_pct": [
+    122,
+    64,
+    65,
+    139,
+    7
+   ]
+  },
+  "kysely/write": {
+   "rps": 5714.25,
+   "rps_runs": [
+    5176.8,
+    5545.2,
+    5714.25,
+    5741.45,
+    5810.7
+   ],
+   "spread_pct": 11.093319333245827,
+   "p50_ms": 10.835042,
+   "p99_ms": 16.151832000000002,
+   "core_busy": 0.9939879759519038,
+   "node_cpu": 0.9943886922820008,
+   "node_cpu_us_per_request": 174.01910876877994,
+   "postgres_cpu": 1.1696528387385712,
+   "oha_cpu": 0.12304716529500061,
+   "node_pss_mb": 196.5146484375,
+   "statements_per_request": 4.002240014000088,
+   "postgres_exec_ms_per_request": 0.03284595528722055,
+   "statements": [
+    {
+     "query": "insert into \"posts\" (\"title\", \"body\", \"user_id\") values ($1, $2, $3), ($4, $5, $6), ($7, $8, $9) returning \"id\", \"title\", \"body\", \"created_at\" as \"createdAt\"",
+     "calls": 114349,
+     "total_ms": 2934.4
+    },
+    {
+     "query": "insert into \"users\" (\"name\", \"email\") values ($1, $2) returning \"id\", \"name\", \"email\", \"created_at\" as \"createdAt\"",
+     "calls": 114349,
+     "total_ms": 771.4
+    },
+    {
+     "query": "commit",
+     "calls": 114349,
+     "total_ms": 27.5
+    },
+    {
+     "query": "begin",
+     "calls": 114349,
+     "total_ms": 20.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    50,
+    100,
+    22,
+    16,
+    23
+   ]
+  },
+  "node-pg/write": {
+   "rps": 5655.25,
+   "rps_runs": [
+    5420.25,
+    5525.7,
+    5655.25,
+    5681.0,
+    5721.4
+   ],
+   "spread_pct": 5.325140356306081,
+   "p50_ms": 10.968416,
+   "p99_ms": 16.62648832,
+   "core_busy": 0.9884711779448622,
+   "node_cpu": 0.9880828741735734,
+   "node_cpu_us_per_request": 174.71957458530983,
+   "postgres_cpu": 1.6405996052888772,
+   "oha_cpu": 0.11694765034803102,
+   "node_pss_mb": 187.5927734375,
+   "statements_per_request": 6.0040139693205425,
+   "postgres_exec_ms_per_request": 0.049260421732018916,
+   "statements": [
+    {
+     "query": "INSERT INTO posts (user_id, title, body)\n         VALUES ($1, $2, $3) RETURNING id, title, body, created_at AS \"createdAt\"",
+     "calls": 339542,
+     "total_ms": 4768.7
+    },
+    {
+     "query": "COMMIT",
+     "calls": 113185,
+     "total_ms": 26.2
+    },
+    {
+     "query": "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING id, name, email, created_at AS \"createdAt\"",
+     "calls": 113179,
+     "total_ms": 756.4
+    },
+    {
+     "query": "BEGIN",
+     "calls": 113178,
+     "total_ms": 20.3
+    }
+   ],
+   "mac_background_cpu_pct": [
+    101,
+    75,
+    34,
+    98,
+    22
+   ]
+  },
+  "prisma/write": {
+   "rps": 2334.9,
+   "rps_runs": [
+    2237.9,
+    2257.05,
+    2334.9,
+    2358.35,
+    2389.45
+   ],
+   "spread_pct": 6.490641997515942,
+   "p50_ms": 25.144562500000003,
+   "p99_ms": 48.11080021999997,
+   "core_busy": 0.9989974937343359,
+   "node_cpu": 0.9963886655835998,
+   "node_cpu_us_per_request": 426.73719027949795,
+   "postgres_cpu": 0.800000849203246,
+   "oha_cpu": 0.05694362221950211,
+   "node_pss_mb": 295.5458984375,
+   "statements_per_request": 6.012998415349694,
+   "postgres_exec_ms_per_request": 0.04769369137864577,
+   "statements": [
+    {
+     "query": "SELECT \"public\".\"posts\".\"id\", \"public\".\"posts\".\"title\", \"public\".\"posts\".\"body\", \"public\".\"posts\".\"created_at\", \"public\".\"posts\".\"user_id\" FROM \"public\".\"posts\" WHERE \"public\".\"posts\".\"user_id\" = $1 ORDER BY \"public\".\"posts\".\"id\" ASC OFFSET $2",
+     "calls": 46803,
+     "total_ms": 358.6
+    },
+    {
+     "query": "COMMIT",
+     "calls": 46803,
+     "total_ms": 12.1
+    },
+    {
+     "query": "SELECT \"public\".\"users\".\"id\", \"public\".\"users\".\"name\", \"public\".\"users\".\"email\", \"public\".\"users\".\"created_at\" FROM \"public\".\"users\" WHERE \"public\".\"users\".\"id\" = $1 LIMIT $2 OFFSET $3",
+     "calls": 46802,
+     "total_ms": 233.7
+    },
+    {
+     "query": "INSERT INTO \"public\".\"posts\" (\"user_id\",\"title\",\"body\",\"created_at\") VALUES ($1,$2,$3,$4), ($5,$6,$7,$8), ($9,$10,$11,$12)",
+     "calls": 46798,
+     "total_ms": 1266.2
+    },
+    {
+     "query": "INSERT INTO \"public\".\"users\" (\"name\",\"email\",\"created_at\") VALUES ($1,$2,$3) RETURNING \"public\".\"users\".\"id\"",
+     "calls": 46795,
+     "total_ms": 347.1
+    },
+    {
+     "query": "BEGIN",
+     "calls": 46794,
+     "total_ms": 9.5
+    }
+   ],
+   "mac_background_cpu_pct": [
+    91,
+    58,
+    24,
+    8,
+    35
+   ]
+  },
+  "typeorm/write": {
+   "rps": 4219.05,
+   "rps_runs": [
+    3681.25,
+    4209.8,
+    4219.05,
+    4274.65,
+    4292.8
+   ],
+   "spread_pct": 14.494969246631353,
+   "p50_ms": 14.502541,
+   "p99_ms": 24.610008399999998,
+   "core_busy": 0.9949924887330996,
+   "node_cpu": 0.9947225812921388,
+   "node_cpu_us_per_request": 235.76932752447559,
+   "postgres_cpu": 0.8869400432275214,
+   "oha_cpu": 0.0908337835459697,
+   "node_pss_mb": 202.6552734375,
+   "statements_per_request": 4.004088598144132,
+   "postgres_exec_ms_per_request": 0.03363316386390301,
+   "statements": [
+    {
+     "query": "COMMIT",
+     "calls": 84470,
+     "total_ms": 20.0
+    },
+    {
+     "query": "INSERT INTO \"posts\"(\"id\", \"user_id\", \"title\", \"body\", \"created_at\") VALUES (DEFAULT, $1, $2, $3, DEFAULT), (DEFAULT, $4, $5, $6, DEFAULT), (DEFAULT, $7, $8, $9, DEFAULT) RETURNING \"id\", \"created_at\"",
+     "calls": 84469,
+     "total_ms": 2236.2
+    },
+    {
+     "query": "INSERT INTO \"users\"(\"id\", \"name\", \"email\", \"created_at\") VALUES (DEFAULT, $1, $2, DEFAULT) RETURNING \"id\", \"created_at\"",
+     "calls": 84467,
+     "total_ms": 566.6
+    },
+    {
+     "query": "START TRANSACTION",
+     "calls": 84463,
+     "total_ms": 15.2
+    }
+   ],
+   "mac_background_cpu_pct": [
+    136,
+    57,
+    17,
+    51,
+    13
+   ]
+  }
+ }
+}
